@@ -1,5 +1,9 @@
 <?php
 
+require get_template_directory() . '/widgets/class-taxonomy-widget.php';
+require get_template_directory() . '/widgets/class-posts-type-widget.php';
+require get_template_directory() . '/widgets/class-posts-taxonomy-widget.php';
+
 add_action('wp_enqueue_scripts', 'theme_enqueue_files');
 
 function theme_enqueue_files()
@@ -20,3 +24,16 @@ function custom_nav_menu_css_class($classes) {
     
     return $classes;
 }
+
+function taxonomy_widgets_init() {
+    register_sidebar( array(
+        'name' => 'Custom_Taxonomy_Widget',
+        'id' => 'custom_taxonomy_widget',
+        'before_widget' => '<div class="widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ) );
+}
+
+add_action( 'widgets_init', 'taxonomy_widgets_init' );

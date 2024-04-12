@@ -6,19 +6,19 @@ Description: Добавление типов к записям
 */
 // Регистрация нового типа записи
 function custom_post_type() {
-    register_post_type('advice', [
+    register_post_type('advantages', [
         'labels' => [
-            'name' => 'Советы',
-            'singular_name' => 'Советы',
+            'name' => 'Преимущества',
+            'singular_name' => 'Преимущества',
         ],
         'public' => true,
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
     ]);
 
-    register_post_type('interview', [
+    register_post_type('staff', [
         'labels' => [
-            'name' => 'Интервью с профессионалами',
-            'singular_name' => 'Интервью с профессионалами',
+            'name' => 'Сотрудники',
+            'singular_name' => 'Сотрудники',
         ],
         'public' => true,
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
@@ -28,7 +28,7 @@ add_action('init', 'custom_post_type');
 
 // Создание новой таксономии
 function custom_taxonomy() {
-    register_taxonomy('custom_section', ['advice', 'interview'], [
+    register_taxonomy('custom_section', ['advantages', 'staff'], [
         'labels' => [
             'name' => 'Разделы',
             'singular_name' => 'Раздел',
@@ -42,9 +42,9 @@ add_action('init', 'custom_taxonomy');
 
 // Добавление метабоксов
 function custom_meta_boxes() {
-    add_meta_box('custom_post_type_box', 'Выберите тип записи', 'custom_post_type_box_callback', ['advice', 'interview'], 'side', 'default');
-    add_meta_box('custom_excerpt_box', 'Краткое описание', 'custom_excerpt_box_callback', ['advice', 'interview'], 'normal', 'default');
-    add_meta_box('custom_thumbnail_box', 'Изображение (превью)', 'custom_thumbnail_box_callback', ['advice', 'interview'], 'side', 'default');
+    add_meta_box('custom_post_type_box', 'Выберите тип записи', 'custom_post_type_box_callback', ['advantages', 'staff'], 'side', 'default');
+    add_meta_box('custom_excerpt_box', 'Краткое описание', 'custom_excerpt_box_callback', ['advantages', 'staff'], 'normal', 'default');
+    add_meta_box('custom_thumbnail_box', 'Изображение (превью)', 'custom_thumbnail_box_callback', ['advantages', 'staff'], 'side', 'default');
 }
 add_action('add_meta_boxes', 'custom_meta_boxes');
 

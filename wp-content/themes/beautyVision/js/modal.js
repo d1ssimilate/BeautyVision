@@ -6,7 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const content = item.querySelector(".accordion-content");
 
     header.addEventListener("click", () => {
-      content.classList.toggle("accordion-content");
+      item.classList.toggle("accordion-open");
+
+      if (item.classList.contains("accordion-open")) {
+        content.style.maxHeight = "100%";
+        content.style.minHeight = content.scrollHeight + "px";
+      } else {
+        content.style.maxHeight = "0";
+        content.style.minHeight = null;
+      }
     });
   });
 });

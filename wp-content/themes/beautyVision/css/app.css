@@ -127,20 +127,34 @@ body {
   gap: 18px;
 }
 
-.accordion-item {
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
+.accordion {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-
 .accordion-header {
   cursor: pointer;
-  padding: 10px;
-  background-color: #f9f9f9;
+  padding: 15px 20px;
+  background-color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 18px;
 }
-
 .accordion-content {
-  display: none;
-  padding: 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: min-height 0.3s ease-out, padding 0.3s ease-out;
+  background: black;
+  color: white;
+  border-radius: 0 0 12px 12px;
+  font-size: 18px;
+}
+.accordion-open .accordion-header {
+  border-radius: 12px 12px 0 0;
+}
+.accordion-open .accordion-content {
+  padding: 15px 20px;
 }
 
 .blog-card {
@@ -372,4 +386,130 @@ body {
   color: white;
   width: 100%;
   text-align: center;
+}
+
+.company {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+.company__title {
+  z-index: 1;
+  font-size: 28px;
+  color: var(--main);
+  z-index: 1;
+  font-weight: 700;
+}
+.company__text {
+  z-index: 1;
+  color: white;
+  font-size: 20px;
+  line-height: 28px;
+}
+.company__info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+  background: black;
+  border-radius: 6px;
+}
+.company__info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 30%;
+  background-image: url("https://kartinki.pics/uploads/posts/2022-12/thumbs/1670241458_kartinkin-net-p-istinnaya-krasota-kartinki-instagram-30.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  background-attachment: fixed;
+}
+.company__questions {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
+  background: pink;
+  padding: 30px;
+  border-radius: 6px;
+}
+.company__questions .company__title {
+  color: black;
+}
+.company__questions::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 30%;
+  background-image: url("https://i.pinimg.com/originals/ec/40/fc/ec40fc628ff643f76ce9815926218671.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  background-attachment: fixed;
+}
+.company__stuff {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+  padding: 30px;
+  border-radius: 6px;
+  background: black;
+}
+.company__stuff .company__title {
+  color: white;
+}
+.company__stuff-taxonomy {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.company__stuff-title {
+  font-size: 22px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  padding: 15px 0;
+  max-width: 740px;
+  width: 100%;
+  margin: 0 auto;
+  font-weight: 600;
+}
+.company__stuff-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(262px, 1fr));
+  gap: 10px;
+}
+.company__stuff-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+.company__stuff-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.company__stuff-card p {
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.company__stuff-card strong {
+  display: none;
 }/*# sourceMappingURL=app.css.map */
