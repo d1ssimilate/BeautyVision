@@ -24,7 +24,7 @@
             <?php
             $args = [
                 'menu_class'        => 'header__menu', 
-                'menu_id'           => false, 
+                'menu'              => 'menu', 
                 'echo'              => true,
                 'depth'             => 0, 
                 'walker'            => '',
@@ -32,4 +32,7 @@
             ];
             wp_nav_menu($args);
             ?>
+            <img class="background"
+                src="https://catherineasquithgallery.com/uploads/posts/2021-02/1614521274_7-p-foni-beloe-na-belom-luchshee-7.jpg"
+                alt="">
         </header>

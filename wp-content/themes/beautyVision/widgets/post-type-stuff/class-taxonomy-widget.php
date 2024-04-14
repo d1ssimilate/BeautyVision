@@ -5,7 +5,7 @@ class Custom_Taxonomy_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'custom_taxonomy_widget',
-            'Список разделов таксономии',
+            'Список разделов таксономии сотрудников',
             array('description' => 'Отображает список разделов созданной таксономии')
         );
     }

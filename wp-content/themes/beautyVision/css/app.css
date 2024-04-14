@@ -17,8 +17,8 @@ html {
   padding: 0 !important;
 }
 
-body {
-  background: white;
+#page-contacts {
+  height: calc(100dvh - 288px);
 }
 
 .wrapper {
@@ -33,6 +33,15 @@ body {
 .container {
   max-width: 1440px;
   margin: 0 auto;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .header {
@@ -59,11 +68,11 @@ body {
 .header__start h1:hover {
   color: var(--main);
 }
-.header__menu {
+.header .menu-menu-container {
   width: 100%;
   background: var(--main);
 }
-.header__menu ul {
+.header__menu {
   max-width: 1440px;
   display: flex;
   align-items: center;
@@ -73,11 +82,11 @@ body {
   flex-wrap: wrap;
   margin: 0 auto;
 }
-.header__menu ul li a {
+.header__menu li a {
   color: white;
   font-weight: 500;
 }
-.header__menu ul li:hover a {
+.header__menu li:hover a {
   text-decoration: underline;
 }
 
@@ -157,19 +166,25 @@ body {
   padding: 15px 20px;
 }
 
-.blog-card {
+.card {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.blog-card img {
+.card img {
   width: 100%;
   height: 300px;
   object-fit: cover;
   object-position: center;
   border-radius: 12px 12px 0 0;
 }
-.blog-card__content {
+.card__price bdi,
+.card__price span {
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+}
+.card__content {
   background: var(--main);
   display: flex;
   flex-direction: column;
@@ -178,27 +193,27 @@ body {
   padding: 30px;
   border-radius: 0 0 12px 12px;
 }
-.blog-card__info {
+.card__info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   gap: inherit;
 }
-.blog-card__title, .blog-card__description {
+.card__title, .card__description {
   color: white;
 }
-.blog-card__title p, .blog-card__description p {
+.card__title p, .card__description p {
   color: white;
 }
-.blog-card__title {
+.card__title {
   font-size: 20px;
   font-weight: 500;
 }
-.blog-card__detail {
+.card__detail {
   width: fit-content;
 }
-.blog-card__detail a {
+.card__detail a {
   display: flex;
   padding: 8px 15px;
   font-size: 18px;
@@ -207,7 +222,7 @@ body {
   border-radius: 8px;
   color: var(--main);
 }
-.blog-card__detail:hover a {
+.card__detail:hover a {
   background: rgb(231, 231, 231);
   color: #f75d4f;
 }
@@ -511,5 +526,123 @@ body {
   letter-spacing: 1px;
 }
 .company__stuff-card strong {
+  display: none;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+.contacts__info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 15px;
+}
+.contacts__info-detail {
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--main);
+}
+.contacts__info-detail strong {
+  font-size: inherit;
+  font-weight: 700;
+}
+.contacts__info-label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 17px;
+}
+.contacts__info-label span input,
+.contacts__info-label textarea {
+  padding: 8px 15px;
+  border-radius: 4px;
+  border: 2px solid var(--main);
+  width: 100%;
+}
+.contacts form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 500px;
+  width: 100%;
+}
+.contacts input[type=submit] {
+  border-radius: 8px;
+  background: var(--main);
+  color: white;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+.home__title {
+  font-size: 28px;
+  font-weight: 700;
+}
+.home__products, .home__blogs, .home__advantages, .home__stuff {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.home__products-card {
+  display: flex;
+  flex-direction: column;
+}
+.home__advantages-card {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 15px;
+  height: 100%;
+  align-items: center;
+  padding: 30px;
+  border-radius: 12px;
+  background: white;
+  -webkit-box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+}
+.home__advantages-card h3 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+.home__advantages-card img {
+  height: 200px;
+  object-fit: contain;
+}
+.home__stuff-card {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  padding: 30px;
+  border-radius: 12px;
+  background: black;
+}
+.home__stuff-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.home__stuff-card h3 {
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.home__stuff-card strong {
   display: none;
 }/*# sourceMappingURL=app.css.map */

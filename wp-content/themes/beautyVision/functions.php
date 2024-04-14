@@ -1,8 +1,11 @@
 <?php
 
-require get_template_directory() . '/widgets/class-taxonomy-widget.php';
-require get_template_directory() . '/widgets/class-posts-type-widget.php';
-require get_template_directory() . '/widgets/class-posts-taxonomy-widget.php';
+require get_template_directory() . '/widgets/post-type-stuff/class-taxonomy-widget.php';
+require get_template_directory() . '/widgets/post-type-stuff/class-posts-type-widget.php';
+require get_template_directory() . '/widgets/post-type-stuff/class-posts-taxonomy-widget.php';
+
+require get_template_directory() . '/widgets/post-type-advantages/class-taxonomy-widget.php';
+require get_template_directory() . '/widgets/post-type-advantages/class-posts-type-widget.php';
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_files');
 

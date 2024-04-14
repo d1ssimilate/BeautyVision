@@ -62,20 +62,20 @@ get_header(); ?>
     if ($custom_query->have_posts()):
         while ($custom_query->have_posts()):
             ?>
-        <div class="blog-card">
+        <div class="card">
             <?php
                 $custom_query->the_post();
                 ?>
             <?= the_post_thumbnail('thumbnail'); ?>
-            <div class="blog-card__content">
-                <h2 class="blog-card__title">
+            <div class="card__content">
+                <h2 class="card__title">
                     <?= the_title(); ?>
                 </h2>
-                <div class="blog-card__info">
-                    <div class="blog-card__description">
+                <div class="card__info">
+                    <div class="card__description">
                         <?= the_excerpt(); ?>
                     </div>
-                    <button class="blog-card__detail">
+                    <button class="card__detail">
                         <?= the_shortlink('Подробнее'); ?>
                     </button>
                 </div>
@@ -83,10 +83,6 @@ get_header(); ?>
         </div>
         <?php
         endwhile;
-        the_posts_pagination(array(
-            'prev_text' => '« Назад',
-            'next_text' => 'Вперед »',
-        ));
         wp_reset_postdata();
     else:
         _e("Не найдено ни одной записи", "textdomain");

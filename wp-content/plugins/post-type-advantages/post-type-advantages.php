@@ -1,11 +1,12 @@
 <?php
-/* Plugin name: Post Types 
+/* Plugin name: Post Type Advantages 
 Author: Роман Макаров
 Version: 1.0
-Description: Добавление типов к записям
+Description: Добавление типа к записям
 */
+
 // Регистрация нового типа записи
-function custom_post_type() {
+function custom_post_type_advantages() { // Изменено имя функции
     register_post_type('advantages', [
         'labels' => [
             'name' => 'Преимущества',
@@ -14,21 +15,12 @@ function custom_post_type() {
         'public' => true,
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
     ]);
-
-    register_post_type('staff', [
-        'labels' => [
-            'name' => 'Сотрудники',
-            'singular_name' => 'Сотрудники',
-        ],
-        'public' => true,
-        'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
-    ]);
 }
-add_action('init', 'custom_post_type');
+add_action('init', 'custom_post_type_advantages');
 
 // Создание новой таксономии
-function custom_taxonomy() {
-    register_taxonomy('custom_section', ['advantages', 'staff'], [
+function custom_taxonomy_advantages() { // Изменено имя функции
+    register_taxonomy('advantages',  'advantages', [
         'labels' => [
             'name' => 'Разделы',
             'singular_name' => 'Раздел',
@@ -38,19 +30,17 @@ function custom_taxonomy() {
         'hierarchical' => true 
     ]);
 }
-add_action('init', 'custom_taxonomy');
+add_action('init', 'custom_taxonomy_advantages');
 
 // Добавление метабоксов
-function custom_meta_boxes() {
-    add_meta_box('custom_post_type_box', 'Выберите тип записи', 'custom_post_type_box_callback', ['advantages', 'staff'], 'side', 'default');
-    add_meta_box('custom_excerpt_box', 'Краткое описание', 'custom_excerpt_box_callback', ['advantages', 'staff'], 'normal', 'default');
-    add_meta_box('custom_thumbnail_box', 'Изображение (превью)', 'custom_thumbnail_box_callback', ['advantages', 'staff'], 'side', 'default');
+function custom_meta_boxes_advantages() { // Изменено имя функции
+    add_meta_box('custom_excerpt_box', 'Краткое описание', 'custom_excerpt_box_callback', 'advantages', 'normal', 'default');
+    add_meta_box('custom_thumbnail_box', 'Изображение (превью)', 'custom_thumbnail_box_callback', 'advantages', 'side', 'default');
 }
-add_action('add_meta_boxes', 'custom_meta_boxes');
-
+add_action('add_meta_boxes', 'custom_meta_boxes_advantages');
 
 // Callback-функции для метабоксов
-function custom_post_type_box_callback($post) {
+function custom_post_type_box_callback_advantages($post) { // Изменено имя функции
     $current_type = get_post_type($post);
     $types = get_post_types(['public' => true], 'objects');
     ?>
@@ -65,7 +55,7 @@ function custom_post_type_box_callback($post) {
 <?php
 }
 
-function custom_excerpt_box_callback($post) {
+function custom_excerpt_box_callback_advantages($post) { // Изменено имя функции
     $excerpt = get_post_meta($post->ID, '_excerpt', true);
     ?>
 <label for="excerpt">Краткое описание:</label>
@@ -73,7 +63,7 @@ function custom_excerpt_box_callback($post) {
 <?php
 }
 
-function custom_thumbnail_box_callback($post) {
+function custom_thumbnail_box_callback_advantages($post) { // Изменено имя функции
     $thumbnail_id = get_post_thumbnail_id($post->ID);
     echo wp_get_attachment_image($thumbnail_id, 'thumbnail');
     ?>
@@ -95,7 +85,7 @@ jQuery(document).ready(function($) {
 <?php
 }
 
-function save_custom_post_type($post_id) {
+function save_custom_post_type_advantages($post_id) { // Изменено имя функции
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     if (!isset($_POST['custom_post_type']) || !current_user_can('edit_post', $post_id)) return;
 
@@ -112,11 +102,11 @@ function save_custom_post_type($post_id) {
         set_post_thumbnail($post_id, $thumbnail_id);
     }
 }
-add_action('save_post', 'save_custom_post_type');
+add_action('save_post', 'save_custom_post_type_advantages');
 
 
 // Создание виджетов и шорткодов
-function custom_single_post_shortcode($atts) {
+function custom_single_post_shortcode_advantages($atts) { // Изменено имя функции
     $atts = shortcode_atts(['id' => 0], $atts);
 }
-add_shortcode('custom_single_post', 'custom_single_post_shortcode');
+add_shortcode('custom_single_post_advantages', 'custom_single_post_shortcode_advantages');
