@@ -14,7 +14,7 @@
                 ?>
         </ul>
         <div class="footer__info">
-            <p>© 2024</p>
+            <p>© 2024 BEAUTY VISION</p>
             <p>Макаров Роман Дис-213/21 Б</p>
         </div>
     </div>

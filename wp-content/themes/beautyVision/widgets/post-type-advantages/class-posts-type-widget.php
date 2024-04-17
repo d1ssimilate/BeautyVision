@@ -1,5 +1,5 @@
 <?php
-// Создание класса виджета для отображения списка записей типа "stuff"
+// Создание класса виджета для отображения списка записей типа "advantages"
 class Custom_Advantages_Widget extends WP_Widget {
     
     public function __construct() {

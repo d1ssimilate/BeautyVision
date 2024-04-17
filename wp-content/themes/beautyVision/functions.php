@@ -3,9 +3,11 @@
 require get_template_directory() . '/widgets/post-type-stuff/class-taxonomy-widget.php';
 require get_template_directory() . '/widgets/post-type-stuff/class-posts-type-widget.php';
 require get_template_directory() . '/widgets/post-type-stuff/class-posts-taxonomy-widget.php';
+require get_template_directory() . '/widgets/post-type-stuff/class-post-id-widget.php';
 
 require get_template_directory() . '/widgets/post-type-advantages/class-taxonomy-widget.php';
 require get_template_directory() . '/widgets/post-type-advantages/class-posts-type-widget.php';
+require get_template_directory() . '/widgets/post-type-advantages/class-post-id-widget.php';
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_files');
 
@@ -16,7 +18,7 @@ function theme_enqueue_files()
     wp_enqueue_style('style', $css_uri);
     wp_enqueue_style('app', $theme_uri . '/css/app.css');
 
-    wp_enqueue_script( 'modal', get_stylesheet_directory_uri() . '/js/modal.js', array( 'jquery' ), '3.0' );
+    wp_enqueue_script( 'modal', get_stylesheet_directory_uri() . '/js/accordion.js', array( 'jquery' ), '3.0' );
 }
 
 

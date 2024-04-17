@@ -9,6 +9,7 @@ if (have_posts()):
             <h1 class="blog__title">
                 <?= the_title(); ?>
             </h1>
+            <p>Пост опубликован: <?php the_date(); ?>, Автор: <?php the_author(); ?></p>
             <div class="blog__content">
                 <?= the_content(); ?>
             </div>
@@ -24,8 +25,8 @@ if (have_posts()):
     
     the_post_navigation(
         array(
-            'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __('«', 'mytheme'),
-            'next_text' => '<span class="meta-nav" aria-hidden="true">' . __('»', 'mytheme'),
+            'next_text' => '<span class="meta-nav" aria-hidden="true">' . __('«', 'mytheme'),
+            'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __('»', 'mytheme'),
         )
     );
 

@@ -17,8 +17,22 @@ html {
   padding: 0 !important;
 }
 
-#page-contacts {
-  height: calc(100dvh - 288px);
+#page-account .woocommerce {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+#page-checkout textarea,
+#page-checkout input {
+  background: var(--main);
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+.cart,
+.shop_table_responsive {
+  background: white;
 }
 
 .wrapper {
@@ -89,6 +103,9 @@ html {
 .header__menu li:hover a {
   text-decoration: underline;
 }
+.header .current_page_item a {
+  border-bottom: 1px solid white;
+}
 
 .footer {
   background: var(--main);
@@ -97,13 +114,25 @@ html {
   display: flex;
   padding: 20px;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
+}
+@media screen and (max-width: 1227px) {
+  .footer__content {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 }
 .footer__links div:first-child ul {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   row-gap: 20px;
   column-gap: 60px;
+}
+@media screen and (max-width: 631px) {
+  .footer__links div:first-child ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 .footer__links div:first-child ul li a {
   color: white;
@@ -117,6 +146,7 @@ html {
 }
 
 .main {
+  min-height: calc(100dvh - 288px);
   height: 100%;
   width: 100%;
   display: flex;
@@ -132,8 +162,18 @@ html {
 
 .blogs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(458px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
+}
+@media screen and (max-width: 990px) {
+  .blogs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 675px) {
+  .blogs {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .accordion {
@@ -197,7 +237,6 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
   gap: inherit;
 }
 .card__title, .card__description {
@@ -209,6 +248,11 @@ html {
 .card__title {
   font-size: 20px;
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .card__detail {
   width: fit-content;
@@ -235,6 +279,12 @@ html {
   display: flex;
   height: calc(100dvh - 288px);
   gap: 10px;
+}
+@media screen and (max-width: 767px) {
+  .blog {
+    flex-direction: column;
+    height: 100%;
+  }
 }
 .blog__main {
   display: flex;
@@ -291,11 +341,11 @@ html {
 .blog figure {
   height: 400px;
   width: 100%;
-  margin-bottom: 30px;
 }
 .blog figure img {
   object-fit: cover;
   width: 100%;
+  height: 100%;
 }
 .blog__nav {
   display: flex;
@@ -313,6 +363,7 @@ html {
 }
 .blog__nav .nav-links {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-around;
   align-items: center;
 }
@@ -325,15 +376,15 @@ html {
   color: white;
   font-size: 20px;
 }
-.blog__nav .nav-links .nav-previous a span::after {
-  content: "Пред.";
-  font-size: 15px;
-  margin-left: 10px;
-}
-.blog__nav .nav-links .nav-next a span::before {
+.blog__nav .nav-links .nav-previous a span::before {
   content: "След.";
   font-size: 15px;
   margin-right: 10px;
+}
+.blog__nav .nav-links .nav-next a span::after {
+  content: "Пред.";
+  font-size: 15px;
+  margin-left: 10px;
 }
 .blog__nav .comment-author {
   display: flex;
@@ -401,6 +452,11 @@ html {
   color: white;
   width: 100%;
   text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .blog__main, .blog__nav {
+    width: 100%;
+  }
 }
 
 .company {
@@ -538,6 +594,7 @@ html {
 .contacts__info {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   gap: 15px;
 }
@@ -589,10 +646,25 @@ html {
   font-size: 28px;
   font-weight: 700;
 }
-.home__products, .home__blogs, .home__advantages, .home__stuff {
+.home__products, .home__blogs, .home__stuff {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(341px, 1fr));
   gap: 15px;
+}
+.home__advantages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+@media screen and (max-width: 990px) {
+  .home__advantages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 726px) {
+  .home__advantages {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 .home__products-card {
   display: flex;
@@ -645,4 +717,221 @@ html {
 }
 .home__stuff-card strong {
   display: none;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(496px, 1fr));
+  gap: 18px;
+}
+@media screen and (max-width: 531px) {
+  .categories {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.categories__card {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+  height: 250px;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+.categories__card:hover {
+  scale: 1.03;
+}
+.categories__card-сover {
+  position: relative;
+  height: 100%;
+}
+.categories__card-сover img {
+  width: 100%;
+  transition: 0.3s ease-in;
+  object-fit: cover;
+  height: 100%;
+}
+.categories__card-сover h2 {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  background: white;
+  font-size: 28px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 15px;
+}
+@media screen and (max-width: 531px) {
+  .products {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.product {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+@media screen and (max-width: 767px) {
+  .product {
+    flex-direction: column;
+    height: 100%;
+  }
+}
+.product__content {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.product__content img {
+  margin: 0 auto;
+  max-height: 350px;
+  object-fit: cover;
+}
+.product__title {
+  font-size: 30px;
+  font-weight: 500;
+}
+.product__description {
+  font-size: 25px;
+  font-weight: 500;
+}
+.product__details {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.product__details #comments {
+  font-size: 20px;
+}
+.product__details form .logged-in-as a {
+  color: var(--main);
+}
+.product__details form .comment-form-comment textarea {
+  background: var(--main);
+  border-radius: 6px;
+  padding: 8px;
+  width: 100%;
+}
+.product__details form .form-submit input[type=submit] {
+  background: black;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+.product__details .commentlist {
+  background: var(--main);
+  padding: 5px;
+  border-radius: 4px;
+}
+.product__details .comment-body p {
+  color: white;
+}
+.product__details .reply {
+  margin-top: 10px;
+}
+.product__details .reply a {
+  background: black;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+.product__details .comment-meta a {
+  color: white;
+}
+.product__details .comment-edit-link {
+  background: black;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.product__details .comment-author {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.product__details .comment-author img {
+  border-radius: 50%;
+}
+.product__details .comment-author .says {
+  color: white;
+}
+.product__details .comment-author .fn a {
+  color: white;
+}
+@media screen and (max-width: 767px) {
+  .product__content, .product__details {
+    width: 100%;
+  }
+}
+.product__text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.product__text span {
+  line-height: 27px;
+  font-size: 18px;
+}
+.product__price {
+  font-weight: 600;
+  font-size: 24px;
+}
+.product__price span {
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 1px;
+}
+.product__price span bdi {
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 1px;
+}
+.product__price span bdi span {
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 1px;
+}
+.product__to-cart {
+  padding: 10px 15px;
+  background: var(--main);
+  border-radius: 8px;
+  width: fit-content;
+  font-size: 18px;
+  color: white;
+}
+
+.woocommerce-MyAccount-navigation .is-active {
+  border-color: black;
+}
+.woocommerce-MyAccount-navigation .is-active a {
+  color: black;
+}
+.woocommerce-MyAccount-navigation ul {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.woocommerce-MyAccount-navigation ul li {
+  border: 1px solid var(--main);
+  border-radius: 4px;
+  background: white;
+  padding: 8px 10px;
+}
+.woocommerce-MyAccount-navigation ul li a {
+  color: var(--main);
+  font-weight: 500;
+  padding: 8px 10px;
 }/*# sourceMappingURL=app.css.map */

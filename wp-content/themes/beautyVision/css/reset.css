@@ -123,11 +123,6 @@ meter {
   all: revert;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
   display: none !important;

@@ -74,11 +74,7 @@ class Custom_Taxonomy_Posts_Widget extends WP_Widget {
     }
 }
 
-// Регистрация шорткода
-// Регистрация шорткода
-// Регистрация шорткода
-// Регистрация шорткода
-// Регистрация шорткода
+// Регистрация шорткодаа
 function custom_taxonomy_posts_shortcode( $atts ) {
     $atts = shortcode_atts( array(
         'taxonomy_id' => 0, // По умолчанию ID таксономии - 0
