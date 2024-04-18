@@ -19,7 +19,7 @@ if ($product_path) {
     <div class="product">
         <div class="product__content">
             <h1 class="product__title"> <?= $product->get_name() ?></h1>
-            <?= $product->get_image(); ?>
+            <?= $product->get_image('woocommerce_thumbnail', ['title' => $product->get_name(), 'alt' => $product->get_name()]) ?>
             <p class="product__description">
                 Описание
             </p>

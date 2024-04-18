@@ -85,7 +85,17 @@ function custom_advantages_shortcode($atts) {
     if ($stuff_query->have_posts()) {
         while ($stuff_query->have_posts()) {
             $stuff_query->the_post();
-            echo '<div class="home__advantages-card"><h3>' . get_the_title() . '</h3>'  . get_the_content() .'</div>';
+            $content = get_the_content();
+            // Извлекаем первое изображение из контента
+            $first_image = get_first_image_from_content($content);
+            echo '<div class="home__advantages-card">';
+            // Если изображение найдено, выводим его
+            echo '<h3>' . get_the_title() . '</h3>';
+
+            if ($first_image) {
+                echo '<img src="' . esc_url($first_image) . '" alt="' . get_the_title() . '" title="' . get_the_title() . '" />';
+            }
+            echo '</div>';
         }
         wp_reset_postdata();
     } else {
@@ -93,4 +103,15 @@ function custom_advantages_shortcode($atts) {
     }
     return ob_get_clean();
 }
+
+// Функция для извлечения первого изображения из контента
+function get_first_image_from_content($content) {
+    $first_image = '';
+    preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
+    if (!empty($matches[1])) {
+        $first_image = $matches[1][0];
+    }
+    return $first_image;
+}
+
 add_shortcode('custom_advantages', 'custom_advantages_shortcode');

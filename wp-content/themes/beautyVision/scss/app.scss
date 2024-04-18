@@ -28,6 +28,26 @@ html {
     border-radius: 4px;
   }
 }
+.woocommerce-form {
+  background: var(--main);
+  border-color: var(--main) !important;
+  label {
+    color: white;
+  }
+}
+.comment-form-author,
+.comment-form-email,
+.comment-form-url {
+  background: white;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.woocommerce-Input {
+  background: white;
+  border-radius: 4px;
+  padding: 5px;
+}
 .cart,
 .shop_table_responsive {
   background: white;
@@ -206,7 +226,8 @@ html {
   height: 100%;
   img {
     width: 100%;
-    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
     object-fit: cover;
     object-position: center;
     border-radius: 12px 12px 0 0;

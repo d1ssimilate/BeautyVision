@@ -1,6 +1,6 @@
 <?php $theme_uri = get_template_directory_uri(); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">

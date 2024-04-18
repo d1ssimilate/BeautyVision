@@ -85,7 +85,15 @@ function custom_stuff_shortcode($atts) {
     if ($stuff_query->have_posts()) {
         while ($stuff_query->have_posts()) {
             $stuff_query->the_post();
-            echo '<div class="home__stuff-card"><h3>' . get_the_title() . '</h3>' . get_the_content() .'</div>';
+            echo '<div class="home__stuff-card">';
+            // Получаем только изображение из контента
+            $first_image = get_first_image(get_the_content());
+            // Если изображение найдено, выводим его
+            echo '<h3>' . get_the_title() . '</h3>';
+            if ($first_image) {
+                echo '<img src="' . esc_url($first_image) . '" alt="' . get_the_title() . '" title="' . get_the_title() . '" />';
+            }
+            echo '</div>';
         }
         wp_reset_postdata();
     } else {
@@ -93,4 +101,15 @@ function custom_stuff_shortcode($atts) {
     }
     return ob_get_clean();
 }
+
+// Функция для извлечения первого изображения из контента
+function get_first_image($content) {
+    $first_image = '';
+    preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
+    if (!empty($matches[1])) {
+        $first_image = $matches[1][0];
+    }
+    return $first_image;
+}
+
 add_shortcode('custom_stuff', 'custom_stuff_shortcode');

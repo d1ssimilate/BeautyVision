@@ -108,7 +108,10 @@ function custom_taxonomy_posts_shortcode( $atts ) {
             foreach ( $posts as $post ) {
                 setup_postdata( $post ); // Устанавливаем контекст поста
                 $output .= '<div class="company__stuff-card">';
-                $output .= get_the_content();
+                $first_image = get_first_image(get_the_content());
+                if ($first_image) {
+                    $output .= '<img src="' . esc_url($first_image) . '" alt="' . get_the_title($post) . '" title="' . get_the_title($post) . '" />';
+                }
                 $output .= '<p>' . get_the_title( $post ) . '</p>';
                 $output .= '</div>';
             }

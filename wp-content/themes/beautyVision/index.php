@@ -22,7 +22,7 @@ get_header();
         foreach ($products as $product) :
     ?>
             <div class="home__products-card card">
-                <?= $product->get_image() ?>
+                <?= $product->get_image('woocommerce_thumbnail', ['title' => $product->get_name(), 'alt' => $product->get_name()]) ?>
                 <div class="card__content">
                     <h3 class="card__title"><?= $product->get_name() ?></h3>
                     <div class="card__info">
@@ -45,39 +45,43 @@ get_header();
         <h2 class="home__title">Блог</h2>
         <div class="home__blogs">
             <?php
-    $args = array(
-        'post_type' => 'post',
-        'posts_per_page' => 4,
-    );
-    $custom_query = new WP_Query($args);
-    if ($custom_query->have_posts()):
-        while ($custom_query->have_posts()):
-            ?>
+$args = array(
+    'post_type' => 'post',
+    'posts_per_page' => 4,
+);
+$custom_query = new WP_Query($args);
+if ($custom_query->have_posts()):
+    while ($custom_query->have_posts()):
+        $custom_query->the_post();
+        ?>
             <div class="card">
                 <?php
-                $custom_query->the_post();
-                ?>
-                <?= the_post_thumbnail('thumbnail'); ?>
+            // Получаем разметку изображения с установленными атрибутами title и alt
+            $thumbnail_title = get_the_title();
+            $thumbnail_alt = get_the_title();
+            $thumbnail = get_the_post_thumbnail(null, 'post-thumbnail', ['title' => $thumbnail_title, 'alt' => $thumbnail_alt]);
+            echo $thumbnail;
+            ?>
                 <div class="card__content">
-                    <h2 class="card__title">
-                        <?= the_title(); ?>
-                    </h2>
+                    <h3 class="card__title">
+                        <?php the_title(); ?>
+                    </h3>
                     <div class="card__info">
                         <div class="card__description">
-                            <?= the_excerpt(); ?>
+                            <?php the_excerpt(); ?>
                         </div>
                         <button class="card__detail">
-                            <?= the_shortlink('Подробнее'); ?>
+                            <?php the_shortlink('Подробнее'); ?>
                         </button>
                     </div>
                 </div>
             </div>
             <?php
-        endwhile;
-        wp_reset_postdata();
-    else:
-        _e("Не найдено ни одной записи", "textdomain");
-    endif;
+    endwhile;
+    wp_reset_postdata();
+else:
+    _e("Не найдено ни одной записи", "textdomain");
+endif;
 ?>
 
         </div>

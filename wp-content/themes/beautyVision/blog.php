@@ -19,8 +19,12 @@ get_header(); ?>
         <div class="card">
             <?php
                 $custom_query->the_post();
+                $thumbnail_title = get_the_title();
+            $thumbnail_alt = get_the_title();
+            $thumbnail = get_the_post_thumbnail(null, 'post-thumbnail', ['title' => $thumbnail_title, 'alt' => $thumbnail_alt]);
+            echo $thumbnail;
                 ?>
-            <?= the_post_thumbnail('thumbnail'); ?>
+
             <div class="card__content">
                 <h2 class="card__title">
                     <?= the_title(); ?>

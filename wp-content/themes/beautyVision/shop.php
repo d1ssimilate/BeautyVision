@@ -16,6 +16,7 @@ $args = array(
 
 $categories = get_categories( $args );
 
+
 foreach ( $categories as $category ) {
     echo '<a class="categories__card" href="' . get_term_link( $category ) . '">';
     echo '<div class="categories__card-сover">';

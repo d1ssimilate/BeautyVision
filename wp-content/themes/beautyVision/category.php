@@ -38,7 +38,7 @@ if ( $products->have_posts() ) {
         $short_description = $product->get_short_description();
         
         // Получаем изображение
-        $image = $product->get_image();
+        $image = $product->get_image('woocommerce_thumbnail', ['title' => $product->get_name(), 'alt' => $product->get_name()]);
         
         echo '<div class="home__products-card card">';
         echo $image;

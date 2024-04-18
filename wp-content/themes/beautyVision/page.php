@@ -12,7 +12,10 @@ if (str_contains($url, 'cart')) {
     get_template_part('checkout');
 }  elseif (str_contains($url, 'product-category')) {
     get_template_part('category');
+}  elseif (str_contains($url, 'products')) {
+    get_template_part('shop');
 } 
+ 
 
 
 get_footer();
